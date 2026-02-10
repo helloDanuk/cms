@@ -34,7 +34,7 @@ abstract class Store
     abstract public function key();
 
     /**
-     * @param string|null $directory
+     * @param  string|null  $directory
      * @return ($directory is null ? string : static)
      */
     public function directory($directory = null)
