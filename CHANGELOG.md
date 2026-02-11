@@ -1,5 +1,14 @@
 # Release Notes
 
+## 5.73.6 (2026-02-11)
+
+### What's fixed
+- Fix after_save preference not persisting when default preferences override 'listing' [#13879](https://github.com/statamic/cms/issues/13879) by @el-schneider
+- Asset auth fix [#13883](https://github.com/statamic/cms/issues/13883) by @duncanmcclean
+- Account for custom fields when checking if entry URIs should be updated [#13859](https://github.com/statamic/cms/issues/13859) by @duncanmcclean
+
+
+
 ## 5.73.5 (2026-02-03)
 
 ### What's fixed
