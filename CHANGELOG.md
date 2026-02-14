@@ -1,5 +1,12 @@
 # Release Notes
 
+## 5.73.7 (2026-02-13)
+
+### What's fixed
+- Revert etags [#13933](https://github.com/statamic/cms/issues/13933) by @jasonvarga
+
+
+
 ## 5.73.6 (2026-02-11)
 
 ### What's fixed
