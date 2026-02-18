@@ -1,5 +1,13 @@
 # Release Notes
 
+## 5.73.9 (2026-02-18)
+
+### What's fixed
+- Correct test namespaces to avoid PSR-4 warnings [#13989](https://github.com/statamic/cms/issues/13989) by @duncanmcclean
+- Sanitize html in html fieldtype [#13992](https://github.com/statamic/cms/issues/13992) by @jasonvarga
+
+
+
 ## 5.73.8 (2026-02-18)
 
 ### What's fixed
