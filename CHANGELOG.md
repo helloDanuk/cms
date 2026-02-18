@@ -1,5 +1,14 @@
 # Release Notes
 
+## 5.73.8 (2026-02-18)
+
+### What's fixed
+- Avoid replacing nocache regions in initial full-measure response [#13953](https://github.com/statamic/cms/issues/13953) by @duncanmcclean
+- Fix Icon fieldtype augment error when value is empty [#13966](https://github.com/statamic/cms/issues/13966) by @jhhazelaar
+- Fix `whereIn()`/`whereNotIn()` error for booleans [#13952](https://github.com/statamic/cms/issues/13952) by @duncanmcclean
+
+
+
 ## 5.73.7 (2026-02-13)
 
 ### What's fixed
