@@ -1,5 +1,14 @@
 # Release Notes
 
+## 5.73.10 (2026-02-20)
+
+### What's fixed
+- Fixes `shouldUpdateUris` regex adding additional brackets to Antlers [#13995](https://github.com/statamic/cms/issues/13995) by @martyf
+- Validate password reset url [#14023](https://github.com/statamic/cms/issues/14023) [#14008](https://github.com/statamic/cms/issues/14008) by @jasonvarga
+- Harden html rendering [#14006](https://github.com/statamic/cms/issues/14006) by @jasonvarga
+
+
+
 ## 5.73.9 (2026-02-18)
 
 ### What's fixed
