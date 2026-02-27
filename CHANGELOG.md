@@ -1,5 +1,51 @@
 # Release Notes
 
+## 6.4.0 (2026-02-27)
+
+**This release contains a potentially breaking change for the sake of security.**
+
+### What's new
+- Floating toolbar keyboard shortcuts [#14036](https://github.com/statamic/cms/issues/14036) by @jaygeorge
+- Add `disabled` prop to `Button` component [#14047](https://github.com/statamic/cms/issues/14047) by @duncanmcclean
+- Provide extra values through container and publish form [#14041](https://github.com/statamic/cms/issues/14041) by @jasonvarga
+- Make more colors themeable [#14013](https://github.com/statamic/cms/issues/14013) by @jaygeorge
+
+### What's fixed
+- Antlers hardening (**Breaking**: See PR for upgrade notes) [#14092](https://github.com/statamic/cms/issues/14092) by @jasonvarga
+- Fix missing site name on Statamic Solo sites [#14038](https://github.com/statamic/cms/issues/14038) by @duncanmcclean
+- Make red text values a consistent 600 [#14037](https://github.com/statamic/cms/issues/14037) by @jaygeorge
+- Fix horizontal content card overflow [#14032](https://github.com/statamic/cms/issues/14032) by @daun
+- Consistent Updates Widget Padding [#14030](https://github.com/statamic/cms/issues/14030) by @JohnathonKoster
+- Cache parsed items during Stache warming [#14031](https://github.com/statamic/cms/issues/14031) by @o1y
+- Avoid overflowing hint in relationship selector [#14033](https://github.com/statamic/cms/issues/14033) by @daun
+- Remove invisible "link" space that could be accidentally clicked [#14040](https://github.com/statamic/cms/issues/14040) by @jaygeorge
+- Widen google2fa constraint to support ^9.0 [#14027](https://github.com/statamic/cms/issues/14027) by @robbiekibler
+- Removes trailing slash when building relative Site URLs [#14029](https://github.com/statamic/cms/issues/14029) by @JohnathonKoster
+- Block methods in Antlers by default [#14042](https://github.com/statamic/cms/issues/14042) by @JohnathonKoster
+- Mention extra provided values in `PublishContainer` docs [#14044](https://github.com/statamic/cms/issues/14044) by @duncanmcclean
+- Fix Firefox not receiving text selection in nested Bards [#14021](https://github.com/statamic/cms/issues/14021) by @jaygeorge
+- Fix empty dropdowns on collection show page [#14054](https://github.com/statamic/cms/issues/14054) by @duncanmcclean
+- Clear progress bar when unmounting listing [#14046](https://github.com/statamic/cms/issues/14046) by @duncanmcclean
+- Throw UnableToReadFile for invalid images in ImageGenerator [#14043](https://github.com/statamic/cms/issues/14043) by @mmodler
+- Fix CSRF token on pages excluded from static caching [#14056](https://github.com/statamic/cms/issues/14056) by @duncanmcclean
+- Improve PDF Viewer [#14064](https://github.com/statamic/cms/issues/14064) by @jasonvarga
+- Antlers user content and config [#14065](https://github.com/statamic/cms/issues/14065) by @jasonvarga
+- Sanitize SVGs in `Icon` component [#14075](https://github.com/statamic/cms/issues/14075) by @duncanmcclean
+- Fix user name and email logic [#14079](https://github.com/statamic/cms/issues/14079) by @jasonvarga
+- Fix elevated sessions [#14076](https://github.com/statamic/cms/issues/14076) by @jasonvarga
+- Remove some unneeded z-indexes from the CodeMirror gutter [#14069](https://github.com/statamic/cms/issues/14069) by @jaygeorge
+- Handle many tabs for both the blueprint and entry view [#14073](https://github.com/statamic/cms/issues/14073) by @jaygeorge
+- Fit more filename characters into asset grid [#13979](https://github.com/statamic/cms/issues/13979) by @daun
+- Fix user fieldtype search [#14084](https://github.com/statamic/cms/issues/14084) by @duncanmcclean
+- Fix asset browser sorting [#14086](https://github.com/statamic/cms/issues/14086) by @duncanmcclean
+- Harden auth redirects [#14093](https://github.com/statamic/cms/issues/14093) by @jasonvarga
+- Harden redirects [#14099](https://github.com/statamic/cms/issues/14099) by @jasonvarga
+- External Glide URL validation [#14101](https://github.com/statamic/cms/issues/14101) by @jasonvarga
+- Clarify that `character_limit` option is only a recommendation [#14102](https://github.com/statamic/cms/issues/14102) by @duncanmcclean
+- Fix error caused by empty globals [#14098](https://github.com/statamic/cms/issues/14098) by @duncanmcclean
+
+
+
 ## 6.3.3 (2026-02-20)
 
 ### What's fixed
