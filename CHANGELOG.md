@@ -1,5 +1,12 @@
 # Release Notes
 
+## 6.4.1 (2026-02-27)
+
+### What's fixed
+- Revert caching of parsed items during Stache warming [#14104](https://github.com/statamic/cms/issues/14104) by @jasonvarga
+
+
+
 ## 6.4.0 (2026-02-27)
 
 **This release contains a potentially breaking change for the sake of security.**
