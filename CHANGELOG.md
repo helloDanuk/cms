@@ -1,6 +1,5 @@
 # Release Notes
 
-
 ## 5.73.11 (2026-02-27)
 
 **This release contains a potentially breaking change for the sake of security.**
