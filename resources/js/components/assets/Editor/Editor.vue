@@ -39,6 +39,7 @@
                                 v-slot="{ actions }"
                             >
                                 <ui-button inset size="sm" v-if="asset.isEditable && isImage && isFocalPointEditorEnabled" @click.prevent="openFocalPointEditor" icon="focus" variant="ghost" class="[&_svg]:!opacity-45" :text="__('Focal Point')" />
+                                <ui-button inset size="sm" v-if="canCrop" @click.prevent="openCropEditor" icon="crop" variant="ghost" class="[&_svg]:!opacity-45" :text="__('Crop')" />
                                 <ui-button inset size="sm" v-if="asset.can_be_transparent" @click="showCheckerboard = !showCheckerboard" icon="eye" variant="ghost" :class="[showCheckerboard ? '[&_svg]:!opacity-45' : '[&_svg]:!opacity-100']" :text="__('Transparency')" />
                                 <ui-button inset size="sm" v-if="canRunAction('rename_asset')" @click.prevent="runAction(actions, 'rename_asset')" icon="rename" variant="ghost" class="[&_svg]:!opacity-45" :text="__('Rename')" />
                                 <ui-button inset size="sm" v-if="canRunAction('move_asset')" @click.prevent="runAction(actions, 'move_asset')" icon="move-folder" variant="ghost" class="[&_svg]:!opacity-45" :text="__('Move to Folder')" />
@@ -164,6 +165,15 @@
                 @closed="closeFocalPointEditor"
             />
 
+            <crop-editor
+                v-if="isCroppable"
+                :asset="asset"
+                :can-replace="asset.canReuploadCrop"
+                v-model:open="showCropEditor"
+                @replaced="handleCropReplaced"
+                @created="handleCropCreated"
+            />
+
         <confirmation-modal
             v-model:open="closingWithChanges"
             :title="__('Unsaved Changes')"
@@ -179,9 +189,12 @@
 
 <script>
 import FocalPointEditor from './FocalPointEditor.vue';
+import CropEditor from './CropEditor.vue';
 import PdfViewer from './PdfViewer.vue';
 import { pick, flatten } from 'lodash-es';
+import { router } from '@inertiajs/vue3';
 import {
+    Button,
     Dropdown,
     DropdownMenu,
     DropdownItem,
@@ -196,11 +209,13 @@ export default {
     emits: ['previous', 'next', 'saved', 'closed', 'action-started', 'action-completed'],
 
     components: {
+        Button,
         Dropdown,
         DropdownMenu,
         DropdownItem,
         ItemActions,
         FocalPointEditor,
+        CropEditor,
         PdfViewer,
         PublishContainer,
         PublishTabs,
@@ -236,6 +251,7 @@ export default {
             fields: null,
             fieldset: null,
             showFocalPointEditor: false,
+            showCropEditor: false,
             showCheckerboard: true,
             error: null,
             errors: {},
@@ -253,6 +269,14 @@ export default {
             if (!this.asset) return false;
 
             return this.asset.isImage;
+        },
+
+        isCroppable() {
+            return this.isImage && this.asset.extension !== 'gif';
+        },
+
+        canCrop() {
+            return this.isCroppable && this.asset.canCrop;
         },
 
         hasErrors: function () {
@@ -281,6 +305,7 @@ export default {
     events: {
         'close-child-editor': function () {
             this.closeFocalPointEditor();
+            this.closeCropEditor();
             this.closeImageEditor();
             this.closeRenamer();
         },
@@ -298,7 +323,7 @@ export default {
 
             const url = cp_url(`assets/${utf8btoa(this.id)}`);
 
-            this.$axios.get(url).then((response) => {
+            return this.$axios.get(url).then((response) => {
                 const data = response.data.data;
                 this.asset = data;
 
@@ -372,6 +397,27 @@ export default {
             point = point === '50-50-1' ? null : point;
             this.values['focus'] = point;
             this.$dirty.add(this.publishContainer);
+        },
+
+        openCropEditor() {
+            this.showCropEditor = true;
+        },
+
+        closeCropEditor() {
+            this.showCropEditor = false;
+        },
+
+        async handleCropReplaced() {
+            const originalPreview = this.asset?.preview;
+            const originalThumbnail = this.asset?.thumbnail;
+            await this.load();
+            Statamic.$callbacks.call('bustAndReloadImageCaches', [originalPreview, originalThumbnail]);
+        },
+
+        handleCropCreated(newAssetId) {
+            const [containerHandle, assetPath] = newAssetId.split('::');
+            const editUrl = cp_url(`assets/browse/${containerHandle}/${assetPath}/edit`);
+            router.get(editUrl);
         },
 
         updateValues(values) {
