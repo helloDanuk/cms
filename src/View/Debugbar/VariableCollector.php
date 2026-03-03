@@ -24,5 +24,7 @@ class VariableCollector extends ConfigCollector
         if (method_exists(parent::class, 'useHtmlVarDumper')) {
             return parent::useHtmlVarDumper($value);
         }
+
+        return $this;
     }
 }
