@@ -1082,7 +1082,11 @@ class Entry implements Arrayable, ArrayAccess, Augmentable, BulkAugmentable, Con
 
         // Since the slug is generated from the title, we'll avoid augmenting
         // the slug which could result in an infinite loop in some cases.
-        $title = $this->withLocale($this->site()->lang(), fn () => (string) Antlers::parse($format, $this->augmented()->except('slug')->all()));
+        $title = $this->withLocale($this->site()->lang(), function () use ($format) {
+            $format = Facades\Parse::config($format);
+
+            return (string) Antlers::parse($format, $this->augmented()->except('slug')->all());
+        });
 
         return trim($title);
     }
@@ -1105,6 +1109,8 @@ class Entry implements Arrayable, ArrayAccess, Augmentable, BulkAugmentable, Con
                 return "{{ {$match[1]} }}";
             }, $format);
         }
+
+        $format = Facades\Parse::config($format);
 
         return (string) Antlers::parse($format, array_merge($this->routeData(), [
             'config' => Cascade::config(),
