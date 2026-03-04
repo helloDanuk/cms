@@ -1,5 +1,17 @@
 # Release Notes
 
+## 5.73.12 (2026-03-04)
+
+### What's fixed
+- Antlers config backwards compatibility [#14146](https://github.com/statamic/cms/issues/14146) by @jasonvarga
+- Config parsing exclusion [#14152](https://github.com/statamic/cms/issues/14152) by @jasonvarga
+- Fix Antlers parser state restoration [#14151](https://github.com/statamic/cms/issues/14151) by @jasonvarga
+- Support Laravel Debugbar 4 [#14142](https://github.com/statamic/cms/issues/14142) by @jasonvarga
+- Remove pdf css [#14141](https://github.com/statamic/cms/issues/14141) by @jasonvarga
+- More Antlers defaults [#14125](https://github.com/statamic/cms/issues/14125) by @jasonvarga
+
+
+
 ## 5.73.11 (2026-02-27)
 
 **This release contains a potentially breaking change for the sake of security.**
