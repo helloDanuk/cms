@@ -1,5 +1,43 @@
 # Release Notes
 
+## 6.5.0 (2026-03-04)
+
+### What's new
+- Add configuring callback functionality to statamic.js [#13811](https://github.com/statamic/cms/issues/13811) by @maurice-ellis
+- Add `min`, `max`, `sum` and `avg` methods to Stache query builder [#13894](https://github.com/statamic/cms/issues/13894) by @duncanmcclean
+- Laravel 13 [#13870](https://github.com/statamic/cms/issues/13870) by @duncanmcclean
+- Image cropping [#13875](https://github.com/statamic/cms/issues/13875) by @jackmcdade
+- Add option to show widget table headers [#14128](https://github.com/statamic/cms/issues/14128) by @jackmcdade
+- Clean Asset Meta Command [#13934](https://github.com/statamic/cms/issues/13934) by @jackmcdade
+
+### What's fixed
+- Ignore toolbar shortcuts while inside menus [#14111](https://github.com/statamic/cms/issues/14111) by @daun
+- Revert floating toolbar buttons inadvertently affected by 14036 [#14118](https://github.com/statamic/cms/issues/14118) by @jaygeorge
+- When sets are expanded, add isolation to force a new stacking context [#14121](https://github.com/statamic/cms/issues/14121) by @jaygeorge
+- Remove z-index from replicator [#14108](https://github.com/statamic/cms/issues/14108) by @jaygeorge
+- Don't force an SVG aspect ratio in the asset preview thumbnails [#14107](https://github.com/statamic/cms/issues/14107) by @jaygeorge
+- Fix replicator preview text merging during reorder [#14072](https://github.com/statamic/cms/issues/14072) by @dannyuk1982
+- Show asset editor toolbar in more situations [#14127](https://github.com/statamic/cms/issues/14127) by @jasonvarga
+- Fix query scopes in asset fieldtype [#14091](https://github.com/statamic/cms/issues/14091) by @duncanmcclean
+- Minor adjustment to label margin [#14139](https://github.com/statamic/cms/issues/14139) by @jaygeorge
+- Fix pjpg format being used as file extension in AssetUploader [#14134](https://github.com/statamic/cms/issues/14134) by @lwekuiper
+- Updates section tweaks [#14129](https://github.com/statamic/cms/issues/14129) by @duncanmcclean
+- Fix addon settings permissions [#14130](https://github.com/statamic/cms/issues/14130) by @duncanmcclean
+- Apply existing container width breakpoints [#13910](https://github.com/statamic/cms/issues/13910) by @daun
+- Prevent dropping nav item with children into root position [#13861](https://github.com/statamic/cms/issues/13861) by @duncanmcclean
+- Antlers config backwards compatibility [#14146](https://github.com/statamic/cms/issues/14146) by @jasonvarga
+- Config parsing exclusion [#14152](https://github.com/statamic/cms/issues/14152) by @jasonvarga
+- Fix Antlers parser state restoration [#14151](https://github.com/statamic/cms/issues/14151) by @jasonvarga
+- Remove pdf css [#14141](https://github.com/statamic/cms/issues/14141) by @jasonvarga
+- More Antlers defaults [#14125](https://github.com/statamic/cms/issues/14125) by @jasonvarga
+- Dutch translations [#14149](https://github.com/statamic/cms/issues/14149) by @JasperWelsing
+- Dutch translations [#14143](https://github.com/statamic/cms/issues/14143) by @lwekuiper
+- French translations [#14113](https://github.com/statamic/cms/issues/14113) by @dadaxr
+- Bump storybook from 10.2.0 to 10.2.10 [#14112](https://github.com/statamic/cms/issues/14112) by @dependabot
+- Bump rollup from 4.44.1 to 4.59.0 [#14106](https://github.com/statamic/cms/issues/14106) by @dependabot
+
+
+
 ## 6.4.1 (2026-02-27)
 
 ### What's fixed
