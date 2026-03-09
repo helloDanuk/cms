@@ -38,9 +38,16 @@
                                 @completed="actionCompleted"
                                 v-slot="{ actions }"
                             >
+                                <ui-button
+                                    inset size="sm" variant="ghost"
+                                    v-if="asset.can_be_transparent"
+                                    :icon="checkerboardIcon"
+                                    class="[&_svg]:!opacity-45"
+                                    :text="__('Transparency')"
+                                    @click="cycleCheckerboard"
+                                />
                                 <ui-button inset size="sm" v-if="asset.isEditable && isImage && isFocalPointEditorEnabled" @click.prevent="openFocalPointEditor" icon="focus" variant="ghost" class="[&_svg]:!opacity-45" :text="__('Focal Point')" />
                                 <ui-button inset size="sm" v-if="canCrop" @click.prevent="openCropEditor" icon="crop" variant="ghost" class="[&_svg]:!opacity-45" :text="__('Crop')" />
-                                <ui-button inset size="sm" v-if="asset.can_be_transparent" @click="showCheckerboard = !showCheckerboard" icon="eye" variant="ghost" :class="[showCheckerboard ? '[&_svg]:!opacity-45' : '[&_svg]:!opacity-100']" :text="__('Transparency')" />
                                 <ui-button inset size="sm" v-if="canRunAction('rename_asset')" @click.prevent="runAction(actions, 'rename_asset')" icon="rename" variant="ghost" class="[&_svg]:!opacity-45" :text="__('Rename')" />
                                 <ui-button inset size="sm" v-if="canRunAction('move_asset')" @click.prevent="runAction(actions, 'move_asset')" icon="move-folder" variant="ghost" class="[&_svg]:!opacity-45" :text="__('Move to Folder')" />
                                 <ui-button inset size="sm" v-if="canRunAction('replace_asset')" @click.prevent="runAction(actions, 'replace_asset')" icon="replace" variant="ghost" class="[&_svg]:!opacity-45" :text="__('Replace')" />
@@ -69,24 +76,24 @@
                             class="flex flex-1 flex-col justify-center items-center p-8 h-full min-h-0"
                         >
                             <!-- Image -->
-                            <div v-if="asset.isImage" class="max-w-full max-h-full" :class="{ 'bg-checkerboard before:opacity-100': asset.can_be_transparent && showCheckerboard }">
+                            <div v-if="asset.isImage" class="max-w-full max-h-full" :class="{ [`bg-checkerboard bg-checkerboard-${checkerboardMode} rounded-md`]: asset.can_be_transparent && showCheckerboard }">
                                 <img :src="asset.preview" class="relative asset-thumb shadow-ui-xl max-w-full max-h-full object-contain" />
                             </div>
 
                             <!-- SVG -->
-                            <div v-else-if="asset.isSvg" class="flex h-full w-full flex-col shadow-ui-xl">
+                            <div v-else-if="asset.isSvg" class="flex h-full w-full flex-col shadow-ui-xl dark:bg-gray-800">
                                 <div class="grid grid-cols-3 gap-1">
-                                    <div class="flex items-center justify-center p-3 aspect-square" :class="{ 'bg-checkerboard before:opacity-100': showCheckerboard }">
+                                    <div class="flex items-center justify-center p-3 aspect-square" :class="{ [`bg-checkerboard bg-checkerboard-${checkerboardMode}`]: showCheckerboard }">
                                         <img :src="asset.url" class="asset-thumb relative z-10 w-4" />
                                     </div>
-                                    <div class="flex items-center justify-center p-3 aspect-square" :class="{ 'bg-checkerboard before:opacity-100': showCheckerboard }">
+                                    <div class="flex items-center justify-center p-3 aspect-square" :class="{ [`bg-checkerboard bg-checkerboard-${checkerboardMode}`]: showCheckerboard }">
                                         <img :src="asset.url" class="asset-thumb relative z-10 w-12" />
                                     </div>
-                                    <div class="flex items-center justify-center p-3 aspect-square" :class="{ 'bg-checkerboard before:opacity-100': showCheckerboard }">
+                                    <div class="flex items-center justify-center p-3 aspect-square" :class="{ [`bg-checkerboard bg-checkerboard-${checkerboardMode}`]: showCheckerboard }">
                                         <img :src="asset.url" class="asset-thumb relative z-10 w-24" />
                                     </div>
                                 </div>
-                                <div class="h-full min-h-0 mt-1 flex items-center justify-center p-3 aspect-square" :class="{ 'bg-checkerboard before:opacity-100': showCheckerboard }">
+                                <div class="h-full min-h-0 mt-1 flex items-center justify-center p-3 aspect-square" :class="{ [`bg-checkerboard bg-checkerboard-${checkerboardMode}`]: showCheckerboard }">
                                     <img :src="asset.url" class="asset-thumb relative z-10 max-h-full w-2/3 max-w-full" />
                                 </div>
                             </div>
@@ -201,9 +208,10 @@ import {
     PublishContainer,
     PublishTabs,
     Icon,
-	Stack,
+    Stack,
 } from '@ui';
 import ItemActions from '@/components/actions/ItemActions.vue';
+import useCheckerboard from '@/composables/checkerboard.js';
 
 export default {
     emits: ['previous', 'next', 'saved', 'closed', 'action-started', 'action-completed'],
@@ -252,7 +260,6 @@ export default {
             fieldset: null,
             showFocalPointEditor: false,
             showCropEditor: false,
-            showCheckerboard: true,
             error: null,
             errors: {},
             actions: [],
@@ -290,6 +297,16 @@ export default {
         isFocalPointEditorEnabled() {
             return Statamic.$config.get('focalPointEditorEnabled');
         },
+    },
+
+    setup() {
+        const checkerboard = useCheckerboard('editor');
+        return {
+            checkerboardMode: checkerboard.mode,
+            checkerboardIcon: checkerboard.icon,
+            showCheckerboard: checkerboard.enabled,
+            cycleCheckerboard: checkerboard.cycle,
+        };
     },
 
     mounted() {
