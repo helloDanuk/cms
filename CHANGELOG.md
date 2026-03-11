@@ -39,6 +39,7 @@
 - Various drag & drop fixes [#14219](https://github.com/statamic/cms/issues/14219) by @duncanmcclean
 - Avoid sanitizing `target` attribute in `markdown()` helper [#14221](https://github.com/statamic/cms/issues/14221) by @duncanmcclean
 - Fix create entry translations [#14223](https://github.com/statamic/cms/issues/14223) by @duncanmcclean
+- Acquire stache-warming lock in Duplicates::find [#14176](https://github.com/statamic/cms/issues/14176) by @mmodler
 - French translations [#14163](https://github.com/statamic/cms/issues/14163) by @dadaxr
 - German translations [#14165](https://github.com/statamic/cms/issues/14165) by @helloDanuk
 - French translations [#14166](https://github.com/statamic/cms/issues/14166) by @ebeauchamps
