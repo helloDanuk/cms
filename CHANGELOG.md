@@ -1,5 +1,16 @@
 # Release Notes
 
+## 6.6.1 (2026-03-12)
+
+### What's fixed
+- Add "Content Search" string to translator's `$additionalStrings` array [#14226](https://github.com/statamic/cms/issues/14226) by @duncanmcclean
+- Make image manipulation presets more readable [#14230](https://github.com/statamic/cms/issues/14230) by @jaygeorge
+- Fix undefined variable in Bard fieldtype [#14238](https://github.com/statamic/cms/issues/14238) by @duncanmcclean
+- French translations [#14232](https://github.com/statamic/cms/issues/14232) by @ebeauchamps
+- Bump tar from 7.5.10 to 7.5.11 [#14231](https://github.com/statamic/cms/issues/14231) by @dependabot
+
+
+
 ## 6.6.0 (2026-03-11)
 
 ### What's new
