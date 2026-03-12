@@ -1,5 +1,16 @@
 # Release Notes
 
+## 6.6.2 (2026-03-12)
+
+### What's fixed
+- Fix color mode preference values [#14242](https://github.com/statamic/cms/issues/14242) by @jasonvarga
+- Add `outside` class to outside layout [#14240](https://github.com/statamic/cms/issues/14240) by @duncanmcclean
+- Only remove Bard set when backspace key is hit [#14189](https://github.com/statamic/cms/issues/14189) by @duncanmcclean
+- Removed a comment from the js code output of the StaticCacher [#14233](https://github.com/statamic/cms/issues/14233) by @micahhenshaw
+- French translations [#14243](https://github.com/statamic/cms/issues/14243) by @ebeauchamps
+
+
+
 ## 6.6.1 (2026-03-12)
 
 ### What's fixed
