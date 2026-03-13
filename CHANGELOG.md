@@ -1,5 +1,16 @@
 # Release Notes
 
+## 6.6.3 (2026-03-13)
+
+### What's fixed
+- Alphabetically order listing/publish container context lists & document `isDirty()` [#14245](https://github.com/statamic/cms/issues/14245) by @duncanmcclean
+- Relationship endpoint authorization [#14254](https://github.com/statamic/cms/issues/14254) by @jasonvarga
+- Replicator fieldtype endpoint hardening [#14255](https://github.com/statamic/cms/issues/14255) by @jasonvarga
+- Show "Drop to Upload" on top when dragging file onto Asset field [#14250](https://github.com/statamic/cms/issues/14250) by @duncanmcclean
+- Avoid globe cursor when dragging & dropping Bard sets [#14248](https://github.com/statamic/cms/issues/14248) by @duncanmcclean
+
+
+
 ## 6.6.2 (2026-03-12)
 
 ### What's fixed
