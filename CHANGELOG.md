@@ -1,5 +1,15 @@
 # Release Notes
 
+## 5.73.13 (2026-03-13)
+
+### What's fixed
+- Relationship endpoint authorization [#14254](https://github.com/statamic/cms/issues/14254) by @jasonvarga
+- Fix ensure field has config [#14195](https://github.com/statamic/cms/issues/14195) by @marcorieser
+- Removed a comment from the js code output of the StaticCacher [#14233](https://github.com/statamic/cms/issues/14233) by @micahhenshaw
+- Acquire stache-warming lock in Duplicates::find [#14176](https://github.com/statamic/cms/issues/14176) by @mmodler
+
+
+
 ## 5.73.12 (2026-03-04)
 
 ### What's fixed
