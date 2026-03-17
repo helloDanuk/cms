@@ -220,8 +220,13 @@ class Terms extends Relationship
                     $id = $this->createTermFromString($id, $taxonomy);
                 }
 
+                if (! $id) {
+                    return null;
+                }
+
                 return explode('::', $id, 2)[1];
             })
+                ->filter()
                 ->unique()
                 ->values()
                 ->all();
@@ -485,9 +490,15 @@ class Terms extends Relationship
         $slug = Str::slug($string, '-', $lang);
 
         if (! $term = Facades\Term::find("{$taxonomy}::{$slug}")) {
+            $taxonomy = Facades\Taxonomy::findByHandle($taxonomy);
+
+            if (User::current()->cant('create', [TermContract::class, $taxonomy])) {
+                return null;
+            }
+
             $term = Facades\Term::make()
                 ->slug($slug)
-                ->taxonomy(Facades\Taxonomy::findByHandle($taxonomy))
+                ->taxonomy($taxonomy)
                 ->set('title', $string);
 
             $term->save();
