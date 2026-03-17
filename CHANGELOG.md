@@ -1,5 +1,14 @@
 # Release Notes
 
+## 5.73.14 (2026-03-17)
+
+### What's fixed
+- Prevent term creation via fieldtype without permission [#14274](https://github.com/statamic/cms/issues/14274) by @duncanmcclean
+- Prevent path traversal in file dictionary [#14272](https://github.com/statamic/cms/issues/14272) by @duncanmcclean
+- Sanitize SVGs on asset reupload [#14270](https://github.com/statamic/cms/issues/14270) by @jasonvarga
+
+
+
 ## 5.73.13 (2026-03-13)
 
 ### What's fixed
