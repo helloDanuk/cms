@@ -1,5 +1,18 @@
 # Release Notes
 
+## 6.7.1 (2026-03-18)
+
+### What's fixed
+- Hide "Duplicate Set" when max sets limit has been reached [#14275](https://github.com/statamic/cms/issues/14275) by @duncanmcclean
+- Fix missing top border in read-only Assets fields [#14277](https://github.com/statamic/cms/issues/14277) by @duncanmcclean
+- Hide set bodies when there are no fields [#14282](https://github.com/statamic/cms/issues/14282) by @jackmcdade
+- Fieldset editing improvements [#14283](https://github.com/statamic/cms/issues/14283) by @jackmcdade
+- Harden `URL::isExternalToApplication()` [#14287](https://github.com/statamic/cms/issues/14287) by @duncanmcclean
+- Prevent opening set picker when `max_sets` limit has been reached [#14290](https://github.com/statamic/cms/issues/14290) by @duncanmcclean
+- Harden password reset [#14294](https://github.com/statamic/cms/issues/14294) by @jasonvarga
+
+
+
 ## 6.7.0 (2026-03-17)
 
 ### What's new
