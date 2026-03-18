@@ -1,5 +1,13 @@
 # Release Notes
 
+## 5.73.15 (2026-03-18)
+
+### What's fixed
+- Harden password reset [#14296](https://github.com/statamic/cms/issues/14296) by @jasonvarga
+- Add additional `URL::isExternalToApplication()` tests [#14288](https://github.com/statamic/cms/issues/14288) by @duncanmcclean
+
+
+
 ## 5.73.14 (2026-03-17)
 
 ### What's fixed
