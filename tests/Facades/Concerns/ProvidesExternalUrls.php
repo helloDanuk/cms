@@ -88,6 +88,52 @@ trait ProvidesExternalUrls
             'http://this-site.com:8000@evil.com',
             'http://this-site.com:8000@evil.com/path',
             'http://this-site.com:8000@webhook.site/token',
+
+            // Backslash bypass
+            'http://evil.com\@this-site.com',
+            'http://evil.com\@this-site.com/',
+            'http://evil.com\@this-site.com/path',
+            'http://evil.com\@subdomain.this-site.com',
+            'http://evil.com\@absolute-url-resolved-from-request.com',
+            'https://evil.com\@this-site.com',
+            'http://evil.com\\@this-site.com',
+            'http://evil.com\\\@this-site.com',
+
+            // Percent-encoded backslash bypass
+            'http://evil.com%5c@this-site.com',
+            'http://evil.com%5c@this-site.com/',
+            'http://evil.com%5c@this-site.com/path',
+            'http://evil.com%5c@subdomain.this-site.com',
+            'http://evil.com%5c@absolute-url-resolved-from-request.com',
+            'https://evil.com%5C@this-site.com',
+
+            // Absolute-looking URL with no host (parse_url() returns false)
+            'http:///path',
+
+            // Percent-encoded whitespace bypass
+            '%20http://evil.com',
+            '%09http://evil.com',
+            '%0ahttp://evil.com',
+
+            // Dangerous URL schemes
+            'javascript:alert(1)',
+            'javascript:alert(document.cookie)',
+            'javascript://this-site.com/%0aalert(1)',
+            'JAVASCRIPT:alert(1)',
+            'data:text/html,<script>alert(1)</script>',
+            'data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg==',
+            'DATA:text/html,test',
+            'vbscript:msgbox(1)',
+            'file:///etc/passwd',
+
+            // Whitespace bypass
+            ' http://this-site.com',
+            ' http://evil.com',
+            '  http://evil.com',
+            "\thttp://evil.com",
+            "\nhttp://evil.com",
+            "\rhttp://evil.com",
+            "\r\nhttp://evil.com",
         ];
     }
 
