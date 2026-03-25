@@ -1,5 +1,12 @@
 # Release Notes
 
+## 5.73.17 (2026-03-25)
+
+### What's fixed
+- Fix term revisions error [#14347](https://github.com/statamic/cms/issues/14347) by @duncanmcclean
+
+
+
 ## 5.73.16 (2026-03-24)
 
 ### What's fixed
