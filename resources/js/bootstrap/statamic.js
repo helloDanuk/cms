@@ -19,6 +19,7 @@ import VueComponentDebug from 'vue-component-debug';
 import { registerIconSetFromStrings } from '@ui';
 import Layout from '@/pages/layout/Layout.vue';
 import { setTranslations, setLocale } from '@/translations/translator.js';
+import { setDefaultLocale as setFormattingLocale } from '@/components/FormattingLocale.js';
 import {
     keys,
     components,
@@ -35,6 +36,7 @@ import {
     echo,
     permissions,
     dateFormatter,
+    numberFormatter,
     commandPalette,
     colorMode,
     contrast,
@@ -123,6 +125,10 @@ export default {
         return dateFormatter;
     },
 
+    get $number() {
+        return numberFormatter;
+    },
+
     get $progress() {
         return progress;
     },
@@ -178,9 +184,9 @@ export default {
 
         const formattingLocale = this.initialConfig.user?.preferences?.formatting_locale;
         if (formattingLocale === 'language') {
-            dateFormatter.setDefaultLocale(this.initialConfig.translationLocale);
+            setFormattingLocale(this.initialConfig.translationLocale);
         } else if (formattingLocale) {
-            dateFormatter.setDefaultLocale(formattingLocale);
+            setFormattingLocale(formattingLocale);
         }
 
         bootingCallbacks.forEach((callback) => callback(this));
@@ -281,6 +287,7 @@ export default {
             $echo: echo,
             $permissions: permissions,
             $date: dateFormatter,
+            $number: numberFormatter,
             $commandPalette: commandPalette,
             $colorMode: colorMode,
             $contrast: contrast,
