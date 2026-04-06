@@ -193,6 +193,7 @@ class ViewServiceProvider extends ServiceProvider
     private function defaultAllowedContentTagPatterns(Application $app): array
     {
         return [
+            'link:*',
             'obfuscate:*',
             'trans:*',
             'trans_choice:*',
