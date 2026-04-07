@@ -1,5 +1,15 @@
 # Release Notes
 
+## 5.73.19 (2026-04-07)
+
+### What's fixed
+- Add `link` tag to allowed Antlers tags [#14438](https://github.com/statamic/cms/issues/14438) by @edalzell
+- Add `@default` support to Antlers content allowlists [#14440](https://github.com/statamic/cms/issues/14440) by @jasonvarga
+- Fix Stache index re-entrancy causing null URIs on cold stache [#14181](https://github.com/statamic/cms/issues/14181) by @o1y
+- Fix form submission types [#14430](https://github.com/statamic/cms/issues/14430) by @daun
+
+
+
 ## 5.73.18 (2026-04-02)
 
 ### What's fixed
