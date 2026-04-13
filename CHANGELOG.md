@@ -1,5 +1,14 @@
 # Release Notes
 
+## 5.73.20 (2026-04-13)
+
+### What's fixed
+- Harden query value resolution [#14476](https://github.com/statamic/cms/issues/14476) by @duncanmcclean
+- Harden OrderBys [#14474](https://github.com/statamic/cms/issues/14474) by @duncanmcclean
+- Remove negative assertions from `TestCase` [#14458](https://github.com/statamic/cms/issues/14458) by @duncanmcclean
+
+
+
 ## 5.73.19 (2026-04-07)
 
 ### What's fixed
