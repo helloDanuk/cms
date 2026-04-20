@@ -7,6 +7,7 @@ use Statamic\Auth\Protect\Protectors\Password\Controller as PasswordProtectContr
 use Statamic\Facades\OAuth;
 use Statamic\Facades\TwoFactor;
 use Statamic\Http\Controllers\ActivateAccountController;
+use Statamic\Http\Controllers\Auth\ElevatedSessionController;
 use Statamic\Http\Controllers\ForgotPasswordController;
 use Statamic\Http\Controllers\FormController;
 use Statamic\Http\Controllers\FrontendController;
@@ -52,6 +53,13 @@ Route::name('statamic.')->group(function () {
             Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->middleware('throttle:statamic.auth')->name('password.email');
             Route::get('password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
             Route::post('password/reset', [ResetPasswordController::class, 'reset'])->middleware('throttle:statamic.auth')->name('password.reset.action');
+
+            Route::middleware('auth')->group(function () {
+                Route::get('confirm-password', [ElevatedSessionController::class, 'showForm'])->name('elevated-session')->middleware([HandleInertiaRequests::class]);
+                Route::post('elevated-session', [ElevatedSessionController::class, 'confirm'])->name('elevated-session.confirm')->middleware('throttle:statamic.auth');
+                Route::get('elevated-session/passkey-options', [ElevatedSessionController::class, 'options'])->name('elevated-session.passkey-options')->middleware('throttle:statamic.passkeys');
+                Route::get('elevated-session/resend-code', [ElevatedSessionController::class, 'resendCode'])->name('elevated-session.resend-code')->middleware('throttle:send-elevated-session-code');
+            });
 
             Route::group(['prefix' => 'passkeys'], function () {
                 Route::middleware('throttle:statamic.passkeys')->group(function () {
