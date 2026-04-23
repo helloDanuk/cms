@@ -28,6 +28,7 @@ use Statamic\Http\Middleware\AuthGuard;
 use Statamic\Http\Middleware\CP\AuthGuard as CPAuthGuard;
 use Statamic\Http\Middleware\CP\HandleInertiaRequests;
 use Statamic\Http\Middleware\RedirectIfTwoFactorSetupIncomplete;
+use Statamic\Http\Middleware\RequireElevatedSession;
 use Statamic\Statamic;
 use Statamic\StaticCaching\NoCache\CsrfTokenController;
 use Statamic\StaticCaching\NoCache\NoCacheController;
@@ -81,9 +82,10 @@ Route::name('statamic.')->group(function () {
                 Route::get('two-factor-challenge', [TwoFactorChallengeController::class, 'index'])->name('two-factor-challenge');
                 Route::post('two-factor-challenge', [TwoFactorChallengeController::class, 'store']);
 
-                Route::withoutMiddleware(RedirectIfTwoFactorSetupIncomplete::class)->group(function () {
-                    Route::get('two-factor/enable', [TwoFactorAuthenticationController::class, 'enable'])->name('users.two-factor.enable');
+                Route::middleware(['auth', RequireElevatedSession::class])->withoutMiddleware(RedirectIfTwoFactorSetupIncomplete::class)->group(function () {
+                    Route::post('two-factor/enable', [TwoFactorAuthenticationController::class, 'enable'])->name('users.two-factor.enable');
                     Route::post('two-factor/confirm', [TwoFactorAuthenticationController::class, 'confirm'])->name('users.two-factor.confirm');
+                    Route::delete('two-factor/disable', [TwoFactorAuthenticationController::class, 'disable'])->name('users.two-factor.disable');
                     Route::get('two-factor/recovery-codes', [TwoFactorRecoveryCodesController::class, 'show'])->name('users.two-factor.recovery-codes.show');
                     Route::post('two-factor/recovery-codes', [TwoFactorRecoveryCodesController::class, 'store'])->name('users.two-factor.recovery-codes.generate');
                     Route::get('two-factor/recovery-codes/download', [TwoFactorRecoveryCodesController::class, 'download'])->name('users.two-factor.recovery-codes.download');
